@@ -1,0 +1,92 @@
+.climaEMare-container {
+  background-image: url('../imgs/background-clima-e-mare.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.climaEMare-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os filhos no eixo horizontal */
+}
+
+.climaEMare-card h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.climaEMare-card h2 {
+  font-size: 1.3rem;
+  color: #0077b6;
+  margin-top: 1.5rem;
+}
+
+.climaEMare-card h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.climaEMare-card select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+  text-align: center;
+}
+
+.lista-mare {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 1rem;
+  text-align: center; /* Centraliza os itens da lista */
+}
+
+.lista-mare li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: #222;
+}
+.lista-mare {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-mare li {
+  margin: 4px 0;
+}
+
+.climaEMare-card h2, .climaEMare-card h3 {
+  margin: 0.5rem 0;
+}
+
+select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+img {
+  vertical-align: middle;
+  height: 50px;
+}
+

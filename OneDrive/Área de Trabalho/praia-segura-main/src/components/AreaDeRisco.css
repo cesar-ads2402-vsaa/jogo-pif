@@ -1,0 +1,75 @@
+.areaDeRisco-container{
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    padding-top: 40px;
+}
+  
+.container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+  }
+  .map-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #003366;
+  }
+  
+  .map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 12px;
+  }
+  
+  .imagem {
+    width: 450px;        
+    height: auto;
+    margin-left: 40px;
+    margin-top: 40px;
+    border-radius: 16px;
+    object-fit: contain; 
+    border: 2px solid #003366;
+  }
+  
+  
+  .texto {
+    font-size: 35px !important;
+    font-weight: bold;
+    color: #003366!important;
+  }
+  
+  .contatos-box {
+    background: rgba(255, 255, 255, 0.793);
+    border-radius: 15px;
+    padding: 3vh 4vw; 
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    max-height: 70vh; 
+    margin-left: 50px;
+  }
+  .map-link {
+    background: rgba(255, 225, 0, 0.793);
+    border-radius: 15px;
+    padding: 1vh 1vw; 
+    width: 90%;
+    font-size: 25px;
+    margin-left: 40px;
+    text-align: center;
+    color: #003366;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .map-link:hover {
+    text-decoration: underline;
+  }
+  

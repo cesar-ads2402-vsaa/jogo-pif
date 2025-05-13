@@ -1,0 +1,97 @@
+.pagina-tubaroes {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif; 
+}
+
+.pagina-tubaroes h1 {
+  font-size: 3.5em;
+  color: #183B4E;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.secao-tubaroes {
+  display: flex; 
+  align-items: flex-end; 
+  margin-bottom: 40px;
+  flex-direction: column; 
+}
+
+.imagem-e-texto {
+  display: flex; 
+  align-items: flex-start;
+  width: 100%; 
+  margin-bottom: 20px; 
+}
+
+.imagem-e-texto img {
+  max-width: 40%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+  margin-bottom: 0; 
+}
+
+.imagem-e-texto p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+  flex: 1; 
+}
+
+.botao-abaixo-texto {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  align-self: flex-start; 
+}
+
+
+@media (max-width: 768px) {
+  .secao-tubaroes {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .imagem-e-texto {
+    flex-direction: column; 
+    align-items: center;
+    margin-bottom: 20px; 
+  }
+
+  .imagem-e-texto img {
+    max-width: 80%;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .imagem-e-texto p {
+    text-align: center;
+  }
+
+  .botao-abaixo-texto {
+   
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    
+    margin-bottom: -30px; 
+  }
+}
+
+
+@media (min-width: 769px) {
+  .secao-tubaroes {
+    align-items: flex-end; 
+  }
+
+  .botao-abaixo-texto {
+    margin-top: auto; 
+  }
+}

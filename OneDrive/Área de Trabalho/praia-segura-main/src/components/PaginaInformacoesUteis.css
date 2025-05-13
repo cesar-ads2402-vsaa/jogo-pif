@@ -1,0 +1,34 @@
+.perguntas-frequentes {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .perguntas-frequentes h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .pergunta-resposta {
+    margin-bottom: 15px;
+  }
+  
+  .pergunta-resposta h3 {
+    color: #007bff; 
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .pergunta-resposta p {
+    color: #555;
+    line-height: 1.6;
+    margin-top: 0;
+  }
+  
+ 
+  

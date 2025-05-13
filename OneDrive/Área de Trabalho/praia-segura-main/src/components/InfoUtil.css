@@ -1,0 +1,26 @@
+.info-util-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    background-color: #f9f9f9; 
+  }
+  
+  .info-util-image {
+    width: 782px;
+    height: 520px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 4px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .info-util-texto {
+    text-align: left;
+    line-height: 1.6; 
+  }
+  
+ 
