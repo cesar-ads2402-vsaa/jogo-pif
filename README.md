@@ -27,7 +27,7 @@
 
 </div>
 
-<div>
+
 1. O que é o jogo?
 - O Gol Brasileiro, jogo desenvolvido na linguagem C pelos alunos do 2° Período de ADS da Cesar School, é um jogo divertido, feito para todas as idades, tanto os mais velhos que tem uma dificuldade maior, quanto os mais jovens que tem mais facilidade, conseguem jogar.
 
@@ -43,5 +43,5 @@
 - Vence o jogo quem fizer 5 gols primeiro;
 - Caso o tempo da partida acabe, vence quem fez mais gols;
 - Caso o tempo acabe e a partida termine com ambos os jogadores com o mesmo número de gols, é declarado empate.
-  </div>
+ 
 
