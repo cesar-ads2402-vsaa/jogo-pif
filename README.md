@@ -24,16 +24,15 @@
   | Biblioteca       | Link para Acesso                                              | Desenvolvedor |
   |------------------|---------------------------------------------------------------|---------------|
   | Cli-lib          | [@Repositório](https://github.com/tgfb/cli-lib)               | Tiago Barros  |
-
 </div>
+<br>
 
+<h2 align="center">🎮 O que é o jogo?</h2>
 
-# Terminal F(C)
+***Terminal F(C)*** é um jogo divertido e dinâmico desenvolvido em linguagem C pelos alunos do 2º período do curso de Análise e Desenvolvimento de Sistemas da CESAR School. Criado para todas as idades, o jogo proporciona uma experiência acessível tanto para os mais jovens, quanto para os mais velhos — promovendo entretenimento e competição amigável.
 
-## 🎮 O que é o jogo?
-*Terminal F(C)* é um jogo divertido e dinâmico desenvolvido em linguagem C pelos alunos do 2º período do curso de Análise e Desenvolvimento de Sistemas da CESAR School. Criado para todas as idades, o jogo proporciona uma experiência acessível tanto para os mais jovens, quanto para os mais velhos — promovendo entretenimento e competição amigável.
+<h2 align="center">🕹️ Como jogar?</h2>
 
-## 🕹️ Como jogar?
 A partida é disputada por *dois jogadores*, um de cada lado da tela. O objetivo é defender sua meta e marcar gols na meta adversária. A movimentação é feita por meio das teclas do teclado:
 
 - *Jogador 1 (esquerda):*
@@ -44,9 +43,10 @@ A partida é disputada por *dois jogadores*, um de cada lado da tela. O objetivo
   - O: Sobe a barra
   - L: Desce a barra
 
-Antes do início da partida, cada jogador informa seu nome. O jogo então começa, com *tempo máximo de 2 minutos* (contagem regressiva). Vence aquele que *fizer 5 gols primeiro. Caso o tempo termine antes disso, vence quem tiver **mais gols* no placar. Em caso de empate, o resultado final também será um empate.
+Antes do início da partida, cada jogador informa seu nome. O jogo então começa, com *tempo máximo de 2 minutos* (contagem regressiva). Vence aquele que *fizer 5 gols primeiro. Caso o tempo termine antes disso, vence quem tiver mais gols* no placar. Em caso de empate, o resultado final também será um empate.
 
-## 📏 Regras do jogo
+<h2 align="center">📏 Regras do jogo</h2>
+
 - 2 jogadores participam da partida.
 - Cada jogador controla sua barra de defesa com as teclas correspondentes.
 - O tempo máximo da partida é de 2 minutos.
