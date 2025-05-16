@@ -1,4 +1,4 @@
-<h1 align="center">Batalha Naval</h1>
+<h1 align="center">Gol brasileiro</h1>
 
 > Projeto desenvolvido para a cadeira de **Programação Imperativa e Funcional** - 2025.1 da CESAR School
 
