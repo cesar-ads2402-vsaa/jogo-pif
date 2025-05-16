@@ -1,4 +1,4 @@
-<h1 align="center">Gol brasileiro</h1>
+<h1 align="center">Terminal F(C)</h1>
 
 > Projeto desenvolvido para a cadeira de **Programação Imperativa e Funcional** - 2025.1 da CESAR School
 
@@ -28,20 +28,31 @@
 </div>
 
 
-1. O que é o jogo?
-- O Gol Brasileiro, jogo desenvolvido na linguagem C pelos alunos do 2° Período de ADS da Cesar School, é um jogo divertido, feito para todas as idades, tanto os mais velhos que tem uma dificuldade maior, quanto os mais jovens que tem mais facilidade, conseguem jogar.
+# Terminal F(C)
 
-2. Como se joga?
-- O jogo se dar por 2 jogadores, cada um defendendo sua meta, e tentando marcar o gol na meta adversária. O jogador da esquerda, joga com as letras “W” para subir a barra e “S” para descer a barra, já o jogador da direita joga com “O” para subir sua barra e “L” para descer sua barra. Antes da partida, é perguntado os nomes dos jogadores, após isso, dá-se início a partida. São no máximo 2 minutos, contados em ordem decrescente. Quem fizer 5 gols primeiro, vence a partida!
+## 🎮 O que é o jogo?
+*Terminal F(C)* é um jogo divertido e dinâmico desenvolvido em linguagem C pelos alunos do 2º período do curso de Análise e Desenvolvimento de Sistemas da CESAR School. Criado para todas as idades, o jogo proporciona uma experiência acessível tanto para os mais jovens, quanto para os mais velhos — promovendo entretenimento e competição amigável.
 
-3. Regras do jogo:
-- 2 jogadores;
-- Limite de 2 minutos por partida;
-- Jogador 1 joga com as letras “W”- Subir e “S”- Descer sua respectiva barra;
-- Jogador 2 joga com as letras “O”- Subir e “L”- Descer sua respectiva barra;
-- A bola passou da sua meta defendida, é gol para o adversário;
-- Vence o jogo quem fizer 5 gols primeiro;
-- Caso o tempo da partida acabe, vence quem fez mais gols;
-- Caso o tempo acabe e a partida termine com ambos os jogadores com o mesmo número de gols, é declarado empate.
+## 🕹️ Como jogar?
+A partida é disputada por *dois jogadores*, um de cada lado da tela. O objetivo é defender sua meta e marcar gols na meta adversária. A movimentação é feita por meio das teclas do teclado:
+
+- *Jogador 1 (esquerda):*
+  - W: Sobe a barra
+  - S: Desce a barra
+
+- *Jogador 2 (direita):*
+  - O: Sobe a barra
+  - L: Desce a barra
+
+Antes do início da partida, cada jogador informa seu nome. O jogo então começa, com *tempo máximo de 2 minutos* (contagem regressiva). Vence aquele que *fizer 5 gols primeiro. Caso o tempo termine antes disso, vence quem tiver **mais gols* no placar. Em caso de empate, o resultado final também será um empate.
+
+## 📏 Regras do jogo
+- 2 jogadores participam da partida.
+- Cada jogador controla sua barra de defesa com as teclas correspondentes.
+- O tempo máximo da partida é de 2 minutos.
+- Marca-se gol quando a bola ultrapassa a linha da meta do adversário.
+- O jogo termina imediatamente quando um jogador atinge 5 gols.
+- Caso o tempo acabe antes disso, vence quem tiver mais gols.
+- Se o placar estiver empatado ao final dos 2 minutos, o jogo termina empatado.
  
 
