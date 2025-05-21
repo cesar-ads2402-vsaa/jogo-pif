@@ -65,6 +65,7 @@ Siga os passos abaixo para compilar e jogar o Terminal F(C) em um sistema Linux:
 | 3️⃣   | Acesse a pasta extraída e **clique na pasta `Terminal F(C)`**.                              | 📁    |
 | 4️⃣   | Dentro dela, **abra a pasta `cli-lib` no Terminal** (clique direito > *Abrir no Terminal*). | 💻    |
 | 5️⃣   | No Terminal, **compile o jogo** com o seguinte comando: gcc -Iinclude src/*.c -o game       | 🛠️    |
+| 6️⃣   | Após a compilação, execute o jogo com: ./game                                               | ▶️    |
 
 🎉 Pronto! Agora é só aproveitar e se divertir com o Terminal F(C)!
 ⚠️ Certifique-se de estar usando um sistema baseado em Linux com o compilador gcc instalado.
