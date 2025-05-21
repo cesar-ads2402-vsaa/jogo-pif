@@ -62,7 +62,7 @@ Siga os passos abaixo para compilar e jogar o Terminal F(C) em um sistema Linux:
 | ----- | ------------------------------------------------------------------------------------------- | ----- |
 | 1️⃣   | Baixe o arquivo **ZIP** do repositório.                                                     | 📥    |
 | 2️⃣   | **Extraia** o conteúdo do arquivo ZIP.                                                      | 📂    |
-| 3️⃣   | Acesse a pasta extraída e **clique na pasta `Terminal F(C)`**.                              | 📁    |
+| 3️⃣   | Acesse a pasta extraída e **clique na pasta `gol-BR`**.                                     | 📁    |
 | 4️⃣   | Dentro dela, **abra a pasta `cli-lib` no Terminal** (clique direito > *Abrir no Terminal*). | 💻    |
 | 5️⃣   | No Terminal, **compile o jogo** com o seguinte comando: gcc -Iinclude src/*.c -o game       | 🛠️    |
 | 6️⃣   | Após a compilação, execute o jogo com: ./game                                               | ▶️    |
