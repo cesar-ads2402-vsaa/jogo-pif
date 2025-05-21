@@ -54,5 +54,30 @@ Antes do início da partida, cada jogador informa seu nome. O jogo então começ
 - O jogo termina imediatamente quando um jogador atinge 5 gols.
 - Caso o tempo acabe antes disso, vence quem tiver mais gols.
 - Se o placar estiver empatado ao final dos 2 minutos, o jogo termina empatado.
+
+<h2 align="center">🧪 Instruções detalhadas para compilar e executar o jogo</h2>
+Siga os passos abaixo para compilar e jogar o Terminal F(C) em um sistema Linux:
+
+<div align="center">
+Etapa	Ação	Ícone
+1️⃣	Baixe o arquivo ZIP do repositório.	📥
+2️⃣	Extraia o conteúdo do arquivo ZIP.	📂
+3️⃣	Acesse a pasta extraída e clique na pasta Terminal F(C).	📁
+4️⃣	Dentro dela, abra a pasta cli-lib no Terminal (clique direito > Abrir no Terminal).	💻
+5️⃣	No Terminal, compile o jogo com o seguinte comando:	🛠️
+
+bash
+Copiar
+Editar
+gcc -Iinclude src/*.c -o game
+| 6️⃣ | Após a compilação, execute o jogo com: | ▶️ |
+
+bash
+Copiar
+Editar
+./game
+</div>
+🎉 Pronto! Agora é só aproveitar e se divertir com o Terminal F(C)!
+⚠️ Certifique-se de estar usando um sistema baseado em Linux com o compilador gcc instalado.
  
 
