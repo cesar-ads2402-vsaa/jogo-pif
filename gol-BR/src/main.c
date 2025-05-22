@@ -110,112 +110,128 @@ int main() {
 
     screenInit(1);
     keyboardInit();
-    timerInit(50); // 20 ticks por segundo
+    timerInit(75); // 20 ticks por segundo
 
-    ticks_por_segundo = 1000 / 50;
+    ticks_por_segundo = 1000 / 75;
     max_ticks = DURACAO_SEGUNDOS * ticks_por_segundo;
 
-    jogador1->x = 2;
-    jogador2->x = MAXX - 3;
-    jogador1->y = jogador2->y = MAXY / 2 - ALTURA_RAQUETE / 2;
+    char jogar_novamente;
 
-    bola->x = (MAXX + MINX) / 2;
-    bola->y = (MAXY + MINY) / 2;
-    bola->dir_x = +1;
-    bola->dir_y = +1;
+    do {
+        jogador1->pontos = jogador2->pontos = 0;
+        jogador1->x = 2;
+        jogador2->x = MAXX - 3;
+        jogador1->y = jogador2->y = MAXY / 2 - ALTURA_RAQUETE / 2;
 
-    desenharPlacarETempo(jogador1, jogador2);
-    desenharRaquete(jogador1->x, jogador1->y);
-    desenharRaquete(jogador2->x, jogador2->y);
-    desenharBola(bola->x, bola->y);
-    screenUpdate();
+        bola->x = (MAXX + MINX) / 2;
+        bola->y = (MAXY + MINY) / 2;
+        bola->dir_x = +1;
+        bola->dir_y = +1;
 
-    while (contagem_ticks < max_ticks && jogador1->pontos < PONTOS_MAXIMOS && jogador2->pontos < PONTOS_MAXIMOS) {
-        if (keyhit()) {
-            int tecla = readch();
-            switch (tecla) {
-                case 'w': case 'W':
-                    if (jogador1->y > MINY + 1) {
-                        apagarRaquete(jogador1->x, jogador1->y);
-                        jogador1->y--;
-                        desenharRaquete(jogador1->x, jogador1->y);
-                    }
-                    break;
-                case 's': case 'S':
-                    if (jogador1->y + ALTURA_RAQUETE < MAXY - 1) {
-                        apagarRaquete(jogador1->x, jogador1->y);
-                        jogador1->y++;
-                        desenharRaquete(jogador1->x, jogador1->y);
-                    }
-                    break;
-                case 'o': case 'O':
-                    if (jogador2->y > MINY + 1) {
-                        apagarRaquete(jogador2->x, jogador2->y);
-                        jogador2->y--;
-                        desenharRaquete(jogador2->x, jogador2->y);
-                    }
-                    break;
-                case 'l': case 'L':
-                    if (jogador2->y + ALTURA_RAQUETE < MAXY - 1) {
-                        apagarRaquete(jogador2->x, jogador2->y);
-                        jogador2->y++;
-                        desenharRaquete(jogador2->x, jogador2->y);
-                    }
-                    break;
+        contagem_ticks = 0;
+
+        screenClear();
+        desenharPlacarETempo(jogador1, jogador2);
+        desenharRaquete(jogador1->x, jogador1->y);
+        desenharRaquete(jogador2->x, jogador2->y);
+        desenharBola(bola->x, bola->y);
+        screenUpdate();
+
+        while (contagem_ticks < max_ticks && jogador1->pontos < PONTOS_MAXIMOS && jogador2->pontos < PONTOS_MAXIMOS) {
+            if (keyhit()) {
+                int tecla = readch();
+                switch (tecla) {
+                    case 'w': case 'W':
+                        if (jogador1->y > MINY + 1) {
+                            apagarRaquete(jogador1->x, jogador1->y);
+                            jogador1->y--;
+                            desenharRaquete(jogador1->x, jogador1->y);
+                        }
+                        break;
+                    case 's': case 'S':
+                        if (jogador1->y + ALTURA_RAQUETE < MAXY - 1) {
+                            apagarRaquete(jogador1->x, jogador1->y);
+                            jogador1->y++;
+                            desenharRaquete(jogador1->x, jogador1->y);
+                        }
+                        break;
+                    case 'o': case 'O':
+                        if (jogador2->y > MINY + 1) {
+                            apagarRaquete(jogador2->x, jogador2->y);
+                            jogador2->y--;
+                            desenharRaquete(jogador2->x, jogador2->y);
+                        }
+                        break;
+                    case 'l': case 'L':
+                        if (jogador2->y + ALTURA_RAQUETE < MAXY - 1) {
+                            apagarRaquete(jogador2->x, jogador2->y);
+                            jogador2->y++;
+                            desenharRaquete(jogador2->x, jogador2->y);
+                        }
+                        break;
+                }
+                screenUpdate();
             }
-            screenUpdate();
+
+            if (timerTimeOver()) {
+                apagarBola(bola->x, bola->y);
+
+                int prox_x = bola->x + bola->dir_x;
+                int prox_y = bola->y + bola->dir_y;
+
+                if (prox_y <= MINY + 1 || prox_y >= MAXY - 1) {
+                    bola->dir_y = -bola->dir_y;
+                    prox_y = bola->y + bola->dir_y;
+                }
+
+                if (prox_x == jogador1->x + 1 && prox_y >= jogador1->y && prox_y < jogador1->y + ALTURA_RAQUETE) {
+                    bola->dir_x = +1; prox_x = bola->x + bola->dir_x;
+                }
+                else if (prox_x == jogador2->x - 1 && prox_y >= jogador2->y && prox_y < jogador2->y + ALTURA_RAQUETE) {
+                    bola->dir_x = -1; prox_x = bola->x + bola->dir_x;
+                }
+                else if (prox_x >= MAXX) {
+                    jogador1->pontos++;
+                    prox_x = (MAXX + MINX) / 2;
+                    prox_y = (MAXY + MINY) / 2;
+                    bola->dir_x = -1;
+                }
+                else if (prox_x <= MINX) {
+                    jogador2->pontos++;
+                    prox_x = (MAXX + MINX) / 2;
+                    prox_y = (MAXY + MINY) / 2;
+                    bola->dir_x = +1;
+                }
+
+                bola->x = prox_x;
+                bola->y = prox_y;
+                desenharPlacarETempo(jogador1, jogador2);
+                desenharBola(bola->x, bola->y);
+                screenUpdate();
+
+                contagem_ticks++;
+            }
         }
 
-        if (timerTimeOver()) {
-            apagarBola(bola->x, bola->y);
+        screenSetColor(WHITE, DARKGRAY);
+        screenGotoxy((MAXX + MINX) / 2 - 6, (MAXY + MINY) / 2);
+        if (jogador1->pontos > jogador2->pontos)
+            printf("%s VENCEU!", jogador1->nome);
+        else if (jogador2->pontos > jogador1->pontos)
+            printf("%s VENCEU!", jogador2->nome);
+        else
+            printf("EMPATE!");
+        screenUpdate();
 
-            int prox_x = bola->x + bola->dir_x;
-            int prox_y = bola->y + bola->dir_y;
+        screenGotoxy((MAXX + MINX) / 2 - 10, (MAXY + MINY) / 2 + 2);
+        printf("Jogar novamente? (s/n): ");
+        screenUpdate();
+        do {
+            jogar_novamente = readch();
+        } while (jogar_novamente != 's' && jogar_novamente != 'S' &&
+                 jogar_novamente != 'n' && jogar_novamente != 'N');
 
-            if (prox_y <= MINY + 1 || prox_y >= MAXY - 1) {
-                bola->dir_y = -bola->dir_y;
-                prox_y = bola->y + bola->dir_y;
-            }
-
-            if (prox_x == jogador1->x + 1 && prox_y >= jogador1->y && prox_y < jogador1->y + ALTURA_RAQUETE) {
-                bola->dir_x = +1; prox_x = bola->x + bola->dir_x;
-            }
-            else if (prox_x == jogador2->x - 1 && prox_y >= jogador2->y && prox_y < jogador2->y + ALTURA_RAQUETE) {
-                bola->dir_x = -1; prox_x = bola->x + bola->dir_x;
-            }
-            else if (prox_x >= MAXX) {
-                jogador1->pontos++;
-                prox_x = (MAXX + MINX) / 2;
-                prox_y = (MAXY + MINY) / 2;
-                bola->dir_x = -1;
-            }
-            else if (prox_x <= MINX) {
-                jogador2->pontos++;
-                prox_x = (MAXX + MINX) / 2;
-                prox_y = (MAXY + MINY) / 2;
-                bola->dir_x = +1;
-            }
-
-            bola->x = prox_x;
-            bola->y = prox_y;
-            desenharPlacarETempo(jogador1, jogador2);
-            desenharBola(bola->x, bola->y);
-            screenUpdate();
-
-            contagem_ticks++;
-        }
-    }
-
-    screenSetColor(WHITE, DARKGRAY);
-    screenGotoxy((MAXX + MINX) / 2 - 6, (MAXY + MINY) / 2);
-    if (jogador1->pontos > jogador2->pontos)
-        printf("%s VENCEU!", jogador1->nome);
-    else if (jogador2->pontos > jogador1->pontos)
-        printf("%s VENCEU!", jogador2->nome);
-    else
-        printf("EMPATE!");
-    screenUpdate();
-    readch();
+    } while (jogar_novamente == 's' || jogar_novamente == 'S');
 
     free(jogador1);
     free(jogador2);
