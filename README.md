@@ -44,6 +44,7 @@ A partida é disputada por *dois jogadores*, um de cada lado da tela. O objetivo
   - L: Desce a barra
 
 Antes do início da partida, cada jogador informa seu nome. O jogo então começa, com *tempo máximo de 2 minutos* (contagem regressiva). Vence aquele que *fizer 5 gols primeiro. Caso o tempo termine antes disso, vence quem tiver mais gols* no placar. Em caso de empate, o resultado final também será um empate.
+Ao término da partida, o sistema exibe as opções de "Exibir Ranking", "Jogar Novamente" ou "Sair".
 
 <h2 align="center">📏 Regras do jogo</h2>
 
