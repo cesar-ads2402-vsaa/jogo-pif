@@ -9,6 +9,7 @@
 #define DURACAO_SEGUNDOS 120
 #define MAX_JOGADORES 100
 #define ARQUIVO_RANKING "data/ranking.txt"
+#define RANKING_ORDENADO "data/ranking_ordenado.txt"
 
 #define ALTURA_RAQUETE 6
 #define CARACTERE_RAQUETE '|'
@@ -31,8 +32,8 @@ long contagem_ticks = 0;
 long ticks_por_segundo;
 long max_ticks;
 
-int carregarRanking(Jogador ranking[], int* total) {
-    FILE* f = fopen(ARQUIVO_RANKING, "r");
+int carregarRanking(const char* file, Jogador ranking[], int* total) {
+    FILE* f = fopen(file, "r");
     if (!f) return 0;
     *total = 0;
     while (fscanf(f, "%20s %d %d", ranking[*total].nome, &ranking[*total].vitorias, &ranking[*total].derrotas) == 3) {
@@ -43,8 +44,8 @@ int carregarRanking(Jogador ranking[], int* total) {
     return 1;
 }
 
-void salvarRanking(Jogador ranking[], int total) {
-    FILE* f = fopen(ARQUIVO_RANKING, "w");
+void salvarRanking(Jogador ranking[], int total, const char* file) {
+    FILE* f = fopen(file, "w");
     if (!f) return;
 
     for (int i = 0; i < total; i++) {
@@ -73,10 +74,52 @@ void atualizarRanking(Jogador ranking[], int* total, char* nome, int venceu) {
 void exibirRanking(Jogador ranking[], int total) {
     printf("\n==== RANKING GERAL ====\n");
     for (int i = 0; i < total; i++) {
-        printf("%s \t- Vitorias: %d \t- Derrotas: %d\n",
-               ranking[i].nome, ranking[i].vitorias, ranking[i].derrotas);
+        printf("%-10s - Vitorias: %-2d - Derrotas: %-2d\n",
+           ranking[i].nome,
+           ranking[i].vitorias,
+           ranking[i].derrotas);
     }
     printf("=======================\n");
+}
+
+void ordenaRanking(const char* entrada, const char* saida) {
+    Jogador ranking[MAX_JOGADORES];
+    int total = 0;
+
+    FILE* f_entrada = fopen(entrada, "r");
+    if (!f_entrada) {
+        printf("Erro ao abrir %s\n", entrada);
+        return;
+    }
+
+    while (fscanf(f_entrada, "%20s %d %d", ranking[total].nome, &ranking[total].vitorias, &ranking[total].derrotas) == 3) {
+        total++;
+        if (total >= MAX_JOGADORES) break;
+    }
+    fclose(f_entrada);
+
+    for (int i = 0; i < total - 1; i++) {
+        for (int j = 0; j < total - i - 1; j++) {
+            if (ranking[j].vitorias < ranking[j + 1].vitorias) {
+                Jogador temp = ranking[j];
+                ranking[j] = ranking[j + 1];
+                ranking[j + 1] = temp;
+            }
+        }
+    }
+
+    FILE* f_saida = fopen(saida, "w");
+    if (!f_saida) {
+        printf("Erro ao criar %s\n", saida);
+        return;
+    }
+
+    for (int i = 0; i < total; i++) {
+        fprintf(f_saida, "%s %d %d\n", ranking[i].nome, ranking[i].vitorias, ranking[i].derrotas);
+    }
+
+    fclose(f_saida);
+
 }
 
 
@@ -147,7 +190,7 @@ int main() {
     Bola* bola = malloc(sizeof(Bola));
     Jogador ranking[MAX_JOGADORES];
     int total_jogadores = 0;
-    carregarRanking(ranking, &total_jogadores);
+    carregarRanking(ARQUIVO_RANKING, ranking, &total_jogadores);
 
     if (!jogador1 || !jogador2 || !bola) {
         fprintf(stderr, "Erro ao alocar memória.\n");
@@ -286,8 +329,10 @@ int main() {
             atualizarRanking(ranking, &total_jogadores, jogador1->nome, 0);
             atualizarRanking(ranking, &total_jogadores, jogador2->nome, 0);
         }
-
-        salvarRanking(ranking, total_jogadores);
+        
+        Jogador ranking_ordenado[MAX_JOGADORES];
+        salvarRanking(ranking, total_jogadores, ARQUIVO_RANKING);
+        ordenaRanking(ARQUIVO_RANKING, RANKING_ORDENADO);
 
         screenUpdate();
 
@@ -300,9 +345,12 @@ int main() {
             op = readch();
 
             if (op == 'r' || op == 'R'){
+                int total_ordenado = 0;
+                carregarRanking(RANKING_ORDENADO, ranking_ordenado, &total_ordenado);
+
                 screenClear();
                 screenUpdate();
-                exibirRanking(ranking, total_jogadores);
+                exibirRanking(ranking_ordenado, total_ordenado);
                 printf("\nPressione qualquer tecla para voltar ao menu...\n");
                 readch(); // aguarda entrada antes de voltar ao menu
                 screenClear();
