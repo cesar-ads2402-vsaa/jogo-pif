@@ -5,7 +5,7 @@
 #include "keyboard.h"
 #include "timer.h"
 
-#define PONTOS_MAXIMOS 1
+#define PONTOS_MAXIMOS 5
 #define DURACAO_SEGUNDOS 120
 #define MAX_JOGADORES 100
 #define ARQUIVO_RANKING "data/ranking.txt"
@@ -326,8 +326,6 @@ int main() {
         }
         else {
             printf("EMPATE!");
-            atualizarRanking(ranking, &total_jogadores, jogador1->nome, 0);
-            atualizarRanking(ranking, &total_jogadores, jogador2->nome, 0);
         }
         
         Jogador ranking_ordenado[MAX_JOGADORES];
