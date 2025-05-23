@@ -5,8 +5,10 @@
 #include "keyboard.h"
 #include "timer.h"
 
-#define PONTOS_MAXIMOS 5
+#define PONTOS_MAXIMOS 1
 #define DURACAO_SEGUNDOS 120
+#define MAX_JOGADORES 100
+#define ARQUIVO_RANKING "data/ranking.txt"
 
 #define ALTURA_RAQUETE 6
 #define CARACTERE_RAQUETE '|'
@@ -16,6 +18,8 @@ typedef struct {
     char nome[21];
     int pontos;
     int x, y; // posição da raquete
+    int vitorias;
+    int derrotas;
 } Jogador;
 
 typedef struct {
@@ -26,6 +30,55 @@ typedef struct {
 long contagem_ticks = 0;
 long ticks_por_segundo;
 long max_ticks;
+
+int carregarRanking(Jogador ranking[], int* total) {
+    FILE* f = fopen(ARQUIVO_RANKING, "r");
+    if (!f) return 0;
+    *total = 0;
+    while (fscanf(f, "%20s %d %d", ranking[*total].nome, &ranking[*total].vitorias, &ranking[*total].derrotas) == 3) {
+        (*total)++;
+        if (*total >= MAX_JOGADORES) break;
+    }
+    fclose(f);
+    return 1;
+}
+
+void salvarRanking(Jogador ranking[], int total) {
+    FILE* f = fopen(ARQUIVO_RANKING, "w");
+    if (!f) return;
+
+    for (int i = 0; i < total; i++) {
+        fprintf(f, "%s %d %d\n", ranking[i].nome, ranking[i].vitorias, ranking[i].derrotas);
+    }
+    fclose(f);
+}
+
+void atualizarRanking(Jogador ranking[], int* total, char* nome, int venceu) {
+    for (int i = 0; i < *total; i++) {
+        if (strcmp(ranking[i].nome, nome) == 0) {
+            if (venceu)
+                ranking[i].vitorias++;
+            else
+                ranking[i].derrotas++;
+            return;
+        }
+    }
+
+    strcpy(ranking[*total].nome, nome);
+    ranking[*total].vitorias = venceu ? 1 : 0;
+    ranking[*total].derrotas = venceu ? 0 : 1;
+    (*total)++;
+}
+
+void exibirRanking(Jogador ranking[], int total) {
+    printf("\n==== RANKING GERAL ====\n");
+    for (int i = 0; i < total; i++) {
+        printf("%s \t- Vitorias: %d \t- Derrotas: %d\n",
+               ranking[i].nome, ranking[i].vitorias, ranking[i].derrotas);
+    }
+    printf("=======================\n");
+}
+
 
 // retorna quantos caracteres de borda foram desenhados
 int desenharBordas() {
@@ -92,6 +145,9 @@ int main() {
     Jogador* jogador1 = malloc(sizeof(Jogador));
     Jogador* jogador2 = malloc(sizeof(Jogador));
     Bola* bola = malloc(sizeof(Bola));
+    Jogador ranking[MAX_JOGADORES];
+    int total_jogadores = 0;
+    carregarRanking(ranking, &total_jogadores);
 
     if (!jogador1 || !jogador2 || !bola) {
         fprintf(stderr, "Erro ao alocar memória.\n");
@@ -110,13 +166,13 @@ int main() {
 
     screenInit(1);
     keyboardInit();
-    timerInit(75); // 20 ticks por segundo
+    timerInit(75); // 13.33 ticks por segundo
 
     ticks_por_segundo = 1000 / 75;
     max_ticks = DURACAO_SEGUNDOS * ticks_por_segundo;
 
+    
     char jogar_novamente;
-
     do {
         jogador1->pontos = jogador2->pontos = 0;
         jogador1->x = 2;
@@ -215,21 +271,48 @@ int main() {
 
         screenSetColor(WHITE, DARKGRAY);
         screenGotoxy((MAXX + MINX) / 2 - 6, (MAXY + MINY) / 2);
-        if (jogador1->pontos > jogador2->pontos)
+        if (jogador1->pontos > jogador2->pontos){
             printf("%s VENCEU!", jogador1->nome);
-        else if (jogador2->pontos > jogador1->pontos)
+            atualizarRanking(ranking, &total_jogadores, jogador1->nome, 1);
+            atualizarRanking(ranking, &total_jogadores, jogador2->nome, 0);
+        }
+        else if (jogador2->pontos > jogador1->pontos){
             printf("%s VENCEU!", jogador2->nome);
-        else
+            atualizarRanking(ranking, &total_jogadores, jogador2->nome, 1);
+            atualizarRanking(ranking, &total_jogadores, jogador1->nome, 0);
+        }
+        else {
             printf("EMPATE!");
+            atualizarRanking(ranking, &total_jogadores, jogador1->nome, 0);
+            atualizarRanking(ranking, &total_jogadores, jogador2->nome, 0);
+        }
+
+        salvarRanking(ranking, total_jogadores);
+
         screenUpdate();
 
-        screenGotoxy((MAXX + MINX) / 2 - 10, (MAXY + MINY) / 2 + 2);
-        printf("Jogar novamente? (s/n): ");
-        screenUpdate();
+        char op;
         do {
-            jogar_novamente = readch();
-        } while (jogar_novamente != 's' && jogar_novamente != 'S' &&
-                 jogar_novamente != 'n' && jogar_novamente != 'N');
+            screenSetColor(WHITE, DARKGRAY);
+            screenGotoxy((MAXX + MINX) / 2 - 25, ((MAXY + MINY) / 2)+2);
+            printf("Escolha: (j) Jogar novamente - (r) Ver ranking - (s) Sair");
+            screenUpdate();
+            op = readch();
+
+            if (op == 'r' || op == 'R'){
+                screenClear();
+                screenUpdate();
+                exibirRanking(ranking, total_jogadores);
+                printf("\nPressione qualquer tecla para voltar ao menu...\n");
+                readch(); // aguarda entrada antes de voltar ao menu
+                screenClear();
+                screenUpdate();
+            }
+
+        } while (op != 'j' && op != 'J' &&
+                 op != 's' && op != 'S');
+        jogar_novamente = (op == 'j' || op == 'J') ? 's' : 'n';
+
 
     } while (jogar_novamente == 's' || jogar_novamente == 'S');
 
