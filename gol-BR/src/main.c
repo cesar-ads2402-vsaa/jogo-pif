@@ -5,7 +5,7 @@
 #include "keyboard.h"
 #include "timer.h"
 
-#define PONTOS_MAXIMOS 1
+#define PONTOS_MAXIMOS 5
 #define DURACAO_SEGUNDOS 120
 #define MAX_JOGADORES 100
 #define ARQUIVO_RANKING "data/ranking.txt"
