@@ -1,0 +1,84 @@
+.sair-container {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sair-header {
+  margin-bottom: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.sair-content {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+}
+
+.sair-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  color: #dc3545;
+}
+
+.sair-message {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.sair-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.sair-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.confirm-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: #c82333;
+}
+
+.cancel-button {
+  background-color: transparent;
+  border: 1px solid #0056b3;
+  color: #0056b3;
+}
+
+.cancel-button:hover {
+  background-color: rgba(0, 86, 179, 0.1);
+}
+
+@media (max-width: 768px) {
+  .sair-container {
+    padding: 1rem;
+  }
+  
+  .sair-buttons {
+    flex-direction: column;
+  }
+  
+  .sair-button {
+    width: 100%;
+  }
+}

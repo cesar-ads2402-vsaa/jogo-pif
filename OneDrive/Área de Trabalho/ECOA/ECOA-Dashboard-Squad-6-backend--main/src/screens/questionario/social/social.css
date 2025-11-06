@@ -1,0 +1,166 @@
+/* Estilos específicos para a página Social */
+.social-question {
+  background-color: rgba(0, 120, 212, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.social-options .option-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-options .option-item input[type="radio"] {
+  width: 30px;
+  height: 30px;
+  accent-color: #0078d4;
+}
+
+.social-options .option-item label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.question-counter {
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  float: right;
+}
+
+/* Estilos para a barra de progresso */
+.progress-bar-container {
+  width: 100%;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  clear: both;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #0078d4;
+  transition: width 0.3s ease;
+}
+
+/* Estilos para os botões de navegação */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.next-button, .submit-button {
+  background-color: #0078d4;
+  color: white;
+}
+
+.next-button:hover, .submit-button:hover {
+  background-color: #005a9e;
+  transform: translateY(-2px);
+}
+
+.back-button {
+  background-color: transparent;
+  border: 1px solid #0078d4;
+  color: white;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 120, 212, 0.1);
+  transform: translateY(-2px);
+}
+
+.back-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Estilos para o título da questão */
+.question-title {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .social-options {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .social-options .option-item {
+    flex-direction: row;
+  }
+  
+  .question-title {
+    font-size: 1.2rem;
+  }
+  
+  .social-question {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-button {
+    width: 100%;
+  }
+  
+  .question-title {
+    font-size: 1.1rem;
+  }
+  
+  .social-question {
+    padding: 1rem;
+  }
+  
+  .question-counter {
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
