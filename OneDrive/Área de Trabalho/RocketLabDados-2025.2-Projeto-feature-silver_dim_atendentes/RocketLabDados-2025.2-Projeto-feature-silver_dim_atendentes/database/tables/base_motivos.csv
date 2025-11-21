@@ -1,0 +1,14 @@
+id_motivo,nome_motivo,categoria,criticidade
+3,Contestação de fatura,"",Baixa
+4,"Alteração de dados cadastrais (vencimento da fatura, telefone, email)","",Média
+5,Consulta de limite,"",baixa
+6,Desbloqueio de cartão,"",Alta
+7,Compra no autorizada,"",Alta
+14,Transferência de agência,"",Média
+15,Renegociação de dívida,"",Média
+9,Problema com aplicativo,"",Média
+10,Consulta de fatura,"",Baixa
+11,Bloqueio de cartão,"",Alta
+12,Contratação de cartão adicional,"",Média
+8,Consulta de contrato,"",média
+13,Dúvidas gerais sobre programa de pontos,"",baixa

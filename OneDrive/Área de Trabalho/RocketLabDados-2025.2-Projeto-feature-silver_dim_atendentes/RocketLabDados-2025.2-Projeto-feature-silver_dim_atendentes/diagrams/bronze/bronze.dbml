@@ -1,0 +1,61 @@
+// TABELAS
+
+Table Custos {
+  ID_Custo integer [primary key]
+  ID_Chamado integer
+  Custo varchar
+}
+
+Table CLientes {
+  ID_Cliente integer [primary key]
+  Nome varchar
+  Email varchar
+  Região varchar
+  Idade integer
+}
+
+Table Atendentes {
+  ID_Atendente integer [primary key]
+  Nome_Atendente varchar
+  Nivel_Atendimento integer
+}
+
+Table Motivos {
+  ID_Motivo integer [primary key]
+  Nome_Motivo varchar
+  Categoria varchar
+  Criticidade varchar
+}
+
+Table Pesquisas_Satisfacao {
+  ID_Pesquisa integer [primary key]
+  ID_Chamado integer
+  Nota_Atendimento integer
+}
+
+Table Canais {
+  Nome_Canal varchar
+  Status_Canal varchar
+}
+
+Table Chamados_Hora { 
+  ID_Chamado integer [primary key]
+  ID_Cliente integer 
+  Hora_Abertura_Chamado varchar
+  Hora_Inicio_Atendimento varchar
+  Hora_Finalizacao_Atendimento varchar
+}
+
+Table Chamados {
+  ID_Chamado integer [primary key]
+  ID_Cliente integer
+  Motivo varchar
+  Canal varchar
+  Resolvido varchar
+  Hora_Abertura_Chamado varchar
+  Hora_Inicio_Atendimento varchar
+  Hora_Finalizaçao_Atendimento varchar
+  Tempo_Espera integer
+  Tempo_Atendimento integer
+  ID_Atendente integer
+}
